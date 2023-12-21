@@ -5,6 +5,8 @@ import Throttling from "./components/Basics/Throttling";
 import CallBindApply from "./components/Basics/CallBindApply";
 import Currying from "./components/Basics/Currying";
 import Flatten from "./components/Flatten";
+import SetTimeout from "./components/Basics/SetTimeout";
+import CompositeFuncs from "./components/CompositeFuncs";
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
       <CallBindApply />
       <Currying />
       <Flatten />
+      <SetTimeout />
+      <CompositeFuncs />
     </div>
 
   );
