@@ -7,20 +7,28 @@ import Currying from "./components/Basics/Currying";
 import Flatten from "./components/Flatten";
 import SetTimeout from "./components/Basics/SetTimeout";
 import CompositeFuncs from "./components/CompositeFuncs";
+import Memoization from "./components/Memoization";
+import ArraysObjects from "./components/Basics/ArraysObjects";
+import Singleton from "./components/DesignPatterns/Singleton";
+import InifiniteScroll from "./components/InfiniteScroll";
 
 function App() {
 
 
   return (
     <div>
-      <Hooks />
+      {/* <Hooks />
       <Debouncing />
       <Throttling />
       <CallBindApply />
-      <Currying />
-      <Flatten />
       <SetTimeout />
-      <CompositeFuncs />
+      <CompositeFuncs /> */}
+      {/* <Memoization /> */}
+      {/* <ArraysObjects /> */}
+      {/* <Currying /> */}
+      {/* <Singleton /> */}
+      {/* <Flatten /> */}
+      <InifiniteScroll />
     </div>
 
   );

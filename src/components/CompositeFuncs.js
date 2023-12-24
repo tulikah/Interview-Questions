@@ -4,7 +4,7 @@ const CompositeFuncs = function(...functions) {
         // Passing product of previous func to the next func, with initial value as args - 5
         return functions.reduceRight((sum, currFunc) => currFunc(sum), args) 
         //reduceRight is for composite functions
-        //reduceLeft is for Pipes
+        //reduce is for Pipes
     }
 
 }
