@@ -1,65 +1,73 @@
 const AsyncAwaitCalls = () => {
 
-    function createAstncTasks() {
-        let value = Math.floor(Math.random() * 10);
-      
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            if (value < 5) {
-              reject(`error with ${value}`);
-            } else {
-              resolve(value * 1000);
-            }
-          }, value * 1000);
-        });
-      }
-      
-      const tasks = [
-        createAstncTasks(),
-        createAstncTasks(),
-        createAstncTasks(),
-        createAstncTasks(),
-        createAstncTasks(),
-      ];
-      
-      const asyncCalls = async (task, cb) => {
-        let resolve = [];
-        let rejects = [];
-        let completed = 0;
-      
-        //Using Promises
-        task.reduce((prev, curr) => {
-          return prev.finally(() => {
-            return curr
-              .then((res) => {
-                resolve.push(res);
-              })
-              .catch((err) => rejects.push(err))
-              .finally(() => {
-                completed++;
-                if (completed === tasks.length) {
-                  cb(rejects, resolve);
+    let random = Math.floor(Math.random * 10);
+
+    function createAsyncCalls(){
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(random < 5){
+                    reject(`Error ${random}`)
+                } else {
+                    resolve(`Resolve ${random}`)
                 }
-              });
-          });
-        }, Promise.resolve());
-      
-        //using async-await
-        for (let t of tasks) {
-          try {
-            let result = await t;
-            resolve.push(result);
-          } catch (error) {
-            rejects.push(error);
-          }
-        }
-        cb(rejects, resolve);
-      };
-      
-      asyncCalls(tasks, (error, result) => {
-        console.log(error);
-        console.log(result);
-      });
+            }, value * 1000);
+        })
+    }
+
+    let tasks = [
+        createAsyncCalls(),
+        createAsyncCalls(),
+        createAsyncCalls(),
+        createAsyncCalls(),
+        createAsyncCalls(),
+        createAsyncCalls()
+    ];
+
+    function runTasks(tasks, cb) {
+        let rejects = [];
+        let resolves = [];
+        let completed = 0;
+
+        //running sequentially
+        tasks.reduce((prev, curr) => {
+            return prev.finally(() => {
+                return curr.then((val) => {
+                    resolves.push(val);
+                })
+                .catch((err) => {
+                    rejects.push(err);
+                })
+                .finally(() => {
+                    completed++;
+                    if(completed === tasks.length) {
+                        cb(resolves, rejects);
+                    }
+                })
+            })
+
+        }, Promise.resolve())
+
+        //running parallely
+        tasks.forEach(element => {
+            element.then((val) => {
+                resolves.push(val);
+            }).catch((err) => {
+                rejects.push(err);
+            }).finally(() => {
+                completed++;
+
+                if(completed === tasks.length) {
+                    cb(resolves, rejects);
+                }
+            })
+        });
+
+    }
+
+    runTasks(tasks, ((resolve, reject) => {
+        console.log("results", resolve);
+        console.log("reject", reject)
+    }))
       
 }
 

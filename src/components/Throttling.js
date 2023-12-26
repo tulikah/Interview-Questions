@@ -24,7 +24,7 @@ const Throttling = () => {
 
     }
 
-    const cheap = throttle(expensive, 200);
+    const cheap = throttle(expensive, 4000);
     window.addEventListener('resize', cheap);
     
 

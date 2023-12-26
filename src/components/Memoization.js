@@ -11,11 +11,23 @@ const Memoization = () => {
     }
 
     const cahced = memoize(sum);
-    console.log(cahced(5));
+    console.log('cache', cahced(5));
 
     function memoize(func){
         let cache = {};
         return function(...args){
+            let data = JSON.stringify(...args);
+
+            if(cache[data]){
+                return cache[data];
+            } 
+            // else {
+                let tem = func(...args);
+                cache[data]= tem;
+                return tem;
+            // }
+
+
             let num = args[0]
             if(num in cache) {
                 return cache[num];
