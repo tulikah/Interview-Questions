@@ -1,14 +1,40 @@
-function Singleton() {
-    const func = {
-        name: () => console.log('tulike'),
-        city: () => console.log('Sec')
+function Counter() {
+   this.count = 0;
+
+   this.increment = () => {
+      return this.count++
    }
-   Object.freeze(func);
-//    func.name = 'tulika' //cannot modify or update an object that is freezed
-   console.log(func.name());
+
+   this.decrement = () => {
+      return this.count--;
+   }
+
 }
 
+const counter1 = new Counter();
+const counter2 = new Counter();
 
+console.log(counter1 === counter2) //false; -> stored in different memory
+
+//Create singleton objs
+
+function Singleton() {
+   let instance;
+
+   return {
+      getInstance() {
+         if(!instance) {
+            instance = new Counter();
+         }
+         return instance;
+      }
+   }
+}
+
+const counter3 = new Singleton.getInstance();
+const counter4 = new Singleton.getInstance();
+
+console.log(counter4 === counter3) //true;
 
 
 export default Singleton;
