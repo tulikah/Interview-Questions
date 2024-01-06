@@ -9,11 +9,12 @@ import SetTimeout from "./components/Basics/SetTimeout";
 import CompositeFuncs from "./components/js/CompositeFuncs";
 import Memoization from "./components/js/Memoization";
 import ArraysObjects from "./components/Basics/ArraysObjects";
-import Singleton from "./components/DesignPatterns/Singleton";
 import InifiniteScroll from "./components/InfiniteScroll";
 import FilterNestedObject from "./components/FilterNestedObject";
 import Timer from "./components/Timer";
 import SwapItems from "./components/Leetcode/SwapItems";
+import StarWidgets from "./components/StarWidgets";
+
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
       {/* <FilterNestedObject /> */}
       {/* <Timer /> */}
       <SwapItems />
+      <StarWidgets />
     </div>
 
   );
