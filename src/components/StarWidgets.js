@@ -12,7 +12,6 @@ const StarWidgets = () => {
         <div>
             <div style={{display: "flex", justifyContent: 'center', alignItems: 'center',margin: '100px'}}>
                 <select style={{margin: '10px', padding:'10px'}} onChange={(e) => {
-                    console.log('value', typeof e.currentTarget.value); 
                     setStars(Number(e.currentTarget.value))}
                     }> 
                     {[...Array(10)].map((c, id) => {
@@ -27,16 +26,17 @@ const StarWidgets = () => {
             <div style={ { display: "flex", justifyContent: 'center', alignItems: 'center', margin: '100px' } }>
 
                 { [...Array(stars)].map((star, idx) => {
-                    const ratingValue = idx + 1;
+                    idx = idx + 1;
                     return (
                         <label key={ idx }>
-                            <input style={ { display: "none" } } className="ratingInput" type="radio" value={ ratingValue } name='radio'
-                                onClick={ () => setRating(ratingValue) }
+                            <input style={ { display: "none" } } className="ratingInput" type="radio" value={ idx } name='radio'
+                                onClick={ () => setRating(idx) }
 
                             />
-                            <FaStar style={ { cursor: "pointer" } } color={ ratingValue <= (hover || rating) ? 'pink' : 'gray' } size={ 100 }
-                                onMouseEnter={ () => setHover(ratingValue) }
-                                onMouseLeave={ () => setHover(null) }
+                            <FaStar style={ { cursor: "pointer" } } color={ idx <= (hover || rating) ? 'pink' : 'gray' } size={ 100 }
+                      
+                                // onMouseEnter={ () => setHover(ratingValue) }
+                                // onMouseLeave={ () => setHover(null) }
                             // onBlur={() => }
                             />
                         </label>

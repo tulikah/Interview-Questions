@@ -32,8 +32,24 @@ const ArraysObjects = () => {
 
     Array.prototype.myReduce = function(cb, initialValue) {
         let accumulator= initialValue;
+        let startingValue;
+
+        //Edge Cases
+
+        if(initialValue === undefined && this.length === 0) throw 'No initial value and array'
+
+        if(initialValue !== undefined) {
+            accumulator = initialValue;
+            startingValue = 0;
+        } else {
+            accumulator = this[0];
+            startingValue = 1;
+        }
+
         for (let index = 0; index < this.length; index++) {
-            accumulator = accumulator ? cb(accumulator, this[index], index, this) : this[index];       
+           if(Object.hasOwn(this, i)) {
+            accumulator = cb(accumulator, this[index], index, this)     
+           }
         }
         return accumulator;
     }
@@ -58,3 +74,13 @@ const ArraysObjects = () => {
 }
 
 export default ArraysObjects
+
+// {
+
+// describe('Test-cases for reduce', () => {
+//     test('Two values', () => {
+//         expect([2, 9].myReduce(add ,9).toEqual(0))
+//     })
+// })
+
+// }

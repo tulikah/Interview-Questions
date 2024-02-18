@@ -41,3 +41,19 @@
 39. Todo-List
 40. Infinite Scroll
 41. Autocomplete
+
+
+
+1. Poll
+2. Stopwatch
+3. Progress Bar
+4 Accordion
+5. Tabs
+6. Debounce
+7. Tic Tac Toe
+8. Popup
+9. Image Carousel
+10. Search Bar
+11. Card Slider
+12. Nested Dropdown
+13. Star Rating
